@@ -1,5 +1,5 @@
 ---
-title: "Creating images with R"
+title: "Creating images with"
 author: "My Anh Vu"
 subtitle: "(with a little bit of magick!)"
 output: html_document
@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
 
 ## Project requirements
 
-I have created a [Github repo](https://github.com/mav-dbt/STATS220) for this course and for this project.
+I have created a [GitHub repo](https://github.com/mav-dbt/STATS220) for this course and for this project. I have also deployed the project using GitHub Pages, which [can be found here](https://mav-dbt.github.io/STATS220/project1_report.html) and used Git for version control.
 
 ![](screenshot220.png)
 
@@ -81,7 +81,7 @@ image_write(animation, "my_animation.gif")
 
 ## Creativity
 
-I used CSS to design a new completely layout (changing font family, colour, sizes, etc.) for the HTML project report and added a cursor & typewriting animation to the subtitle. I also incorporated aspects from xkcd's Bobby Tables or the SQL injection sketch when creating my meme/GIF, giving it additional context, and used a function from the *magick* package that was not covered in the lectures/labs, image_resize() to resize my images down to the desired size of 300px x 350px.
+I used CSS to design a new completely layout (changing font family, colour, sizes, etc.) for the HTML project report and added a cursor/typewriting animation to the subtitle, as well as entry animation for the title and the author's section. As a play on the title I also modified 'Creating images with R' to 'Creating images with', followed by the R logo to add a touch of visual to the header. I also incorporated aspects from xkcd's Bobby Tables or the SQL injection sketch when creating my meme/GIF, giving it additional context, and used a function from the *magick* package that was not covered in the lectures/labs, image_resize() to resize my images down to the desired size of 300px x 350px.
 
 
 ## Learning reflection
@@ -94,26 +94,40 @@ p {
 }
 
 .container-fluid, .main-container {
-  margin: 0;
   padding: 0;
-  max-width: 100%;
+  margin: 0 auto;
+  max-width: 90%;
 }
 
 #header {
   height: fit-content;
   padding: 0;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/c1/Rlogo.png);
+  background-size: contains;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 h1.title, .subtitle, .author {
   text-align: left;
-  margin: 20px 50px 0;
+  padding: 10px 0 10px 50px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 h1.title {
-  font-size: 60px;
-  margin: 200px 50px 0;
+  font-size: 71px;
+  padding: 200px 50px 0;
   font-weight: bold;
+  animation: left-in 1.5s ease-in;
+}
+
+@keyframes left-in {
+  from {
+    opacity: 0%;
+    transform: translateX(-100px);
+  } to {
+    opacity: 100%;
+  }
 }
 
 h1.title, .author {
@@ -121,36 +135,46 @@ h1.title, .author {
 }
 
 .subtitle {
+  width: fit-content;
+  height: fit-content;
   font-size: 40px;
   color: #83c6e5;
   overflow: hidden;
-  border-right: .15em solid #2596be;
+  border-right: .10em solid #2596be;
   white-space: nowrap; 
   animation: 
-    typing 3.5s steps(40, end),
-    blink-caret .5s step-end infinite;
+    typing 1.5s steps(30, end),
+    blinking .85s step-end infinite;
 }
 
 @keyframes typing {
   from { 
     width: 0;
-  }
-  to { 
+  } to { 
     width: 500px;
   }
 }
 
-@keyframes blink-caret {
+@keyframes blinking {
   from, to { 
-      border-color: transparent 
-    }
-  50% { 
+      border-color: transparent; 
+    } 50% { 
       border-color: #2596be; 
     }
 }
 
 .author {
   font-size: 25px;
+  animation: right-in 1.5s ease-in;
+}
+
+@keyframes right-in {
+  from {
+    opacity: 0%;
+    transform: translateX(100px);
+  } to {
+    opacity: 100%;
+  }
 }
 
 body, pre {
