@@ -11,20 +11,55 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
 
 ## Project requirements
 
-I have created a [GitHub repo](https://github.com/mav-dbt/STATS220) for this course and for this project. I have also deployed the project using GitHub Pages, which [can be found here](https://mav-dbt.github.io/STATS220/project1_report.html) and used Git for version control.
+I have created a [GitHub repo](https://github.com/mav-dbt/STATS220) for this course and for this project. I have also deployed the project using GitHub Pages, which [can be found here](https://mav-dbt.github.io/STATS220/project1_report.html) and used Git for version control. 
+
+The required files, 
+
+* project1_report.Rmd
+* project1_report.html
+* meme.R
+* my_animation.gif
+* my_meme.png
+* Project1.Rproj
+
+along with the image folder that contains images featured in the meme were created in RStudio and stored in a folder, Project1, on my computer. I used Git to pull the README.md file from GitHub into the folder, in order to make pushing the entire folder onto the main branch of the repo easier later on. All of these files have now been uploaded onto the GitHub repo, except for .gitignore, .RData, and .Rhistory.
+
+A screenshot of the project folder from file explorer:
 
 ![](screenshot220.png)
 
-## My meme
+*Author's Note: Alternatively, a screenshot of the folder from RStudio is attached below (accessed via the toggle button). The files that got excluded when I pushed the folder onto the main branch of my GitHub repo are shown here.*
 
-*Note: Apart from 'This is Fine', I was also inspired by xkcd's Bobby Tables sketch.*
+<script>
+function toggleImage() {
+    var img = document.getElementById("extraScreenshot");
+    if (img.style.display === "none") {
+        img.style.display = "block";
+    } else {
+        img.style.display = "none";
+    }
+}
+</script>
+
+<button onclick="toggleImage()">Show folder screenshot from RStudio!</button>
+
+<img id="extraScreenshot" src="screenshot220_fromRStudio.png" style="display: none; margin-top: 10px;">
+
+<br></br>
+
+
+## My meme
 
 
 The original 'This is Fine' meme:
 
 ![](https://i.kym-cdn.com/photos/images/newsfeed/001/401/347/312.jpg)
 
-I re-created the 'This is Fine' meme with a slight twist to add a bit of story context before the final punchline. To do this, I removed the final 'This is Fine' panel and added 5 frames preceding it to lead into the story, giving it a 'comic-y' appearance keeping in spirit with the original meme, which was from a web comic. The first few frames were taken from ([this post from Docker](https://twitter.com/Docker/status/1457393936016805890)) and modified using Photoshop so that the dialogue is about an SQL injection (2nd frame specifically) before the iconic 'This is Fine' line and the image of the dog in a burning house.
+*Author's Note: Apart from 'This is Fine', I was also inspired by [xkcd's Bobby Tables sketch](https://xkcd.com/327/).*
+
+I re-created the 'This is Fine' meme with a slight twist to add a bit of story context before the final punchline. To do this, I removed the final 'This is Fine' panel and added 5 frames preceding it to lead into the story, giving it a 'comic-y' appearance keeping in spirit with the original meme, which was from a web comic. 
+
+The first few frames were taken from ([this post from Docker](https://twitter.com/Docker/status/1457393936016805890)) and modified using Photoshop so that the dialogue is about an SQL injection (2nd frame specifically) before the iconic 'This is Fine' line and the image of the dog in a burning house.
 
 ```{r meme-code, eval=TRUE}
 library(magick) # Imports the magick library
@@ -78,13 +113,29 @@ animation <- image_animate(c(frameOne, frameTwo, frameOne, frameThree, separator
 image_write(animation, "my_animation.gif")
 ```
 ![](my_animation.gif)
+<br></br>
+
 
 ## Creativity
 
-I used CSS to design a new completely layout (changing font family, colour, sizes, etc.) for the HTML project report and added a cursor/typewriting animation to the subtitle, as well as entry animation for the title and the author's section. As a play on the title I also modified 'Creating images with R' to 'Creating images with', followed by the R logo to add a touch of visual to the header. I also incorporated aspects from xkcd's Bobby Tables or the SQL injection sketch when creating my meme/GIF, giving it additional context, and used a function from the *magick* package that was not covered in the lectures/labs, image_resize() to resize my images down to the desired size of 300px x 350px.
+I used CSS to design a new completely layout (changing font family, colour, sizes, etc. - sorry, I'm a dark mode fan!) for the HTML project report and added a cursor/typewriting animation to the subtitle, as well as in-sync entry animation for the title and the author's section. 
 
+As a play on the title I also modified 'Creating images with R' string into 'Creating images with', followed by the R logo to add a touch of visual to the header. 
+
+I also incorporated aspects from xkcd's Bobby Tables/SQL injection sketch when creating my meme/GIF, giving them additional context, and used a function from the *magick* package that was not covered in the lectures/labs, image_resize(), to resize my images down to the desired size of 300px x 350px.
+
+It's a tiny detail, but I've also injected some HTML (and technically, Javascript) to make a toggle button and to force a break between the sections!
+
+```{html, EVAL=FALSE}
+// Breaking up the sections
+<br></br>
+```
 
 ## Learning reflection
+
+I learned the basic syntax of the R programming language and R Markdown from Module 1. R Markdown is particularly interesting to me because of its flexibility - how you can write with different programming languages within a R Markdown file and the code will still be interpreted as-is by the compiler, how you can also import packages/libraries in said languages (such as *magick* in R), and how you can knit the R Markdown file to output HTML, a Word doc, or even PowerPoint - and yet it's also very intuitive to write. 
+
+This module was a gentle introduction to HTML/CSS/R, but I feel that it's a bit light on the data/statistics side of data technologies. The *magick* package is fun to meddle with, but *how is it used by people 'in the know' i.e. data scientists or engineers, professional statisticians, etc.?* That's the main thing I'd like to explore further regarding the content from Module 1.
 
 
 ```{css}
@@ -198,4 +249,12 @@ img {
   margin: auto;
   max-width: 800px;
 }
+
+button {
+  display: block;
+  height: 50px;
+  width: 400px;
+  background-color: #1A1C1B;
+}
+
 ```
